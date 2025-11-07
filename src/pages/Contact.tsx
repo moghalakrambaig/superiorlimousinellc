@@ -59,7 +59,7 @@ const Contact = () => {
                   {
                     icon: <MapPin className="w-6 h-6 text-accent" />,
                     title: "Address",
-                    text: "22 Emerson St. Norwalk CT 06855",
+                    text: "22 Emerson St, Norwalk, CT 06855",
                   },
                   {
                     icon: <Clock className="w-6 h-6 text-accent" />,
