@@ -15,7 +15,7 @@ const Footer = () => {
     },
     {
       icon: MapPin,
-      text: "22 Emerson St, Norwalk, CT 06855",
+      text: "Norwalk CT",
     },
   ];
 
