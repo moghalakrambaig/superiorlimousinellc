@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Phone, Mail, MapPin, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
   const quickLinks = ["Home", "Fleet", "Services", "About", "Contact"];
@@ -95,20 +97,67 @@ const Footer = () => {
             © 2025 Superior Limousine LLC Executive Transportation. All rights
             reserved.
           </p>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="font-sans text-sm text-primary-foreground/60 hover:text-accent transition-colors"
-              >
-                {item}
-              </a>
-            ))}
+          <div className="flex items-center gap-4">
+            <div className="flex gap-6">
+              {["Privacy Policy", "Terms of Service"].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="font-sans text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+            <ShareAction />
           </div>
         </div>
       </div>
     </footer>
+  );
+};
+
+const ShareAction = () => {
+  const { toast } = useToast();
+
+  const handleShare = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    const shareTitle = "Superior Limousine LLC";
+    const shareText = "Experience premier executive and luxury transportation with Superior Limousine LLC!";
+
+    if ((navigator as any).share) {
+      try {
+        await (navigator as any).share({ title: shareTitle, text: shareText, url });
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") console.error("Error sharing:", error);
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(url);
+        toast({ title: "Link copied!", description: "Website link has been copied to clipboard" });
+      } catch (err) {
+        console.error("Clipboard write failed", err);
+      }
+    } else {
+      // Fallback
+      try {
+        window.prompt("Copy this link:", url);
+      } catch {}
+    }
+  };
+
+  return (
+    <Button
+      variant="default"
+      size="sm"
+      onClick={handleShare}
+      title="Share this page"
+      aria-label="Share this page"
+      className="flex items-center gap-2"
+    >
+      <Share2 className="w-4 h-4" />
+      <span className="hidden sm:inline font-sans text-sm">Share</span>
+    </Button>
   );
 };
 
