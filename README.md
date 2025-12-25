@@ -107,30 +107,4 @@ This project can be deployed to Vercel (recommended). `vercel.json` is included 
 - No unit test runner is configured by default. If you add tests, consider Vitest or Jest.
 
 
-## ✨ Contributing
 
-1. Fork the repo
-2. Create a branch `feature/your-feature`
-3. Make changes and keep commits focused and descriptive
-4. Open a pull request; include screenshots or descriptions for UI changes
-
-
-## 📞 Contact
-
-- Project: Superior Limousine LLC
-- Maintainer: (Add maintainer name/email here)
-
-
-## 📜 License
-
-Add your license details here (for example MIT). If you don't have a license yet, consider adding one to clarify reuse rules.
-
-
----
-
-If you'd like, I can also:
-- Add a `CONTRIBUTING.md` template
-- Add CI (GitHub Actions) to run lint and preview builds
-- Add a small `docs/` page with design tokens and component usage
-
-Let me know which additions you'd like next! ✅
